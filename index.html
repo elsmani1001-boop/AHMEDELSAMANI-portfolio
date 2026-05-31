@@ -1,42 +1,88 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ahmed Salah Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Salah | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Inter:wght@300;400;600&display=swap');
         
-        /* 1. اللوحة التعريفية (التي طلبتها في الصورة الثانية) */
-        .hero-box { 
-            max-width: 800px; margin: 100px auto 50px; 
-            padding: 40px; border: 2px solid #00ffcc; 
-            border-radius: 20px; text-align: center; background: rgba(0,0,0,0.8);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050507; color: #ffffff; font-family: 'Inter', sans-serif; }
 
-        /* 2. قسم المشاريع */
-        .projects-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; max-width: 1000px; margin: 0 auto 50px; padding: 20px;
-        }
-        .card { 
-            padding: 20px; border: 1px solid #333; border-radius: 10px; 
-            background: #111; text-align: center;
-        }
+        /* القائمة العلوية */
+        .navbar { position: fixed; top: 0; width: 100%; height: 75px; background: rgba(5, 5, 7, 0.9); display: flex; justify-content: space-between; align-items: center; padding: 0 50px; z-index: 1000; border-bottom: 1px solid #333; }
+        
+        /* الخلفية المتحركة */
+        .slideshow { position: fixed; top: 0; width: 100%; height: 100vh; z-index: -1; }
+        .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 2s; }
+        .slide.active { opacity: 0.3; }
+
+        /* اللوحة التعريفية الجديدة */
+        .hero-section { max-width: 900px; margin: 150px auto 50px; padding: 50px; background: rgba(10, 20, 30, 0.8); border: 1px solid #00ffcc; border-radius: 20px; text-align: center; }
+        
+        /* الأقسام */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .card { background: rgba(16, 24, 48, 0.8); padding: 30px; border-radius: 15px; border: 1px solid #00ffcc; }
+
+        /* التذييل */
+        footer { background: #000; padding: 50px; margin-top: 50px; border-top: 1px solid #333; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="hero-box">
-        <img src="ahmad_elsamani_final_logo.jpg" style="width: 80px;">
-        <h1>AHMED SALAH</h1>
-        <p>CONTROL & AUTOMATION ENGINEER</p>
+    <nav class="navbar">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <img src="ahmad_elsamani_final_logo.jpg" style="height: 40px;">
+            <span style="font-family: 'Orbitron'; font-weight: 900;">AHMED SALAH</span>
+        </div>
+    </nav>
+
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('images/1.png');"></div>
+        <div class="slide" style="background-image: url('images/2.png');"></div>
     </div>
 
-    <div class="projects-grid">
-        <div class="card"><h3>AUTOMATION</h3><p>تفاصيل الأتمتة...</p></div>
-        <div class="card"><h3>IIoT</h3><p>تفاصيل الـ IoT...</p></div>
-        <div class="card"><h3>EPLAN</h3><p>تفاصيل الـ EPLAN...</p></div>
-    </div>
+    <section class="hero-section">
+        <h1 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 20px;">AHMED SALAH AHMED ELSAMANI</h1>
+        <h3 style="color: #00ffcc; margin-bottom: 20px;">CONTROL & AUTOMATION ENGINEER</h3>
+        <p style="line-height: 1.6;">Specialized in industrial automation, digital transformation, and core engineering projects with 3+ years of experience.</p>
+    </section>
 
+    <section class="projects-grid">
+        <div class="card">
+            <h3>AUTOMATION</h3>
+            <p>PLC programming, SCADA/HMI design and industrial sorting systems.</p>
+        </div>
+        <div class="card">
+            <h3>IIoT</h3>
+            <p>Edge gateways, cloud connectivity and predictive maintenance.</p>
+        </div>
+        <div class="card">
+            <h3>EPLAN</h3>
+            <p>Electrical schematics, 2D layouts and 3D panel assembly design.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+            <a href="#" style="color:white; margin:0 10px; font-size: 20px;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color:white; margin:0 10px; font-size: 20px;"><i class="fab fa-linkedin"></i></a>
+            <a href="#" style="color:white; margin:0 10px; font-size: 20px;"><i class="fas fa-envelope"></i></a>
+        </div>
+        <img src="ahmad_elsamani_final_logo.jpg" style="height: 30px; margin-top: 10px;">
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #666;">© 2026 Ahmed Salah. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    </script>
 </body>
 </html>
