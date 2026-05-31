@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. شريط التنقل العلوي الذكي (Navbar) المحدث للشعار الجديد */
+        /* 1. شريط التنقل العلوي الذكي (Navbar) المحدث بالترتيب الجديد */
         .navbar {
             position: fixed;
             top: 0;
@@ -52,7 +52,6 @@
             gap: 15px;
         }
 
-        /* ضبط تصميم الشعار الدائري المضيء */
         .nav-logo img {
             height: 50px;
             width: 50px;
@@ -91,7 +90,7 @@
             text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
         }
 
-        /* 2. الصفحة الأولى الأساسية (Hero Section) */
+        /* 2. الصفحة الأولى الأساسية (Hero Section) ذات الخلفية الحية المتغيرة */
         .hero-section {
             position: relative;
             width: 100%;
@@ -140,246 +139,4 @@
             background-image: 
                 linear-gradient(var(--grid-color) 1.5px, transparent 1.5px),
                 linear-gradient(90deg, var(--grid-color) 1.5px, transparent 1.5px);
-            background-size: 35px 35px;
-            background-color: rgba(5, 5, 7, 0.5);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .hero-panel {
-            position: relative;
-            z-index: 3;
-            background: var(--panel-bg);
-            border: 1px solid rgba(0, 255, 204, 0.25);
-            border-radius: 24px;
-            padding: 50px 40px;
-            max-width: 900px;
-            width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .hero-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #00ffcc;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .hero-description {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #cbd5e1;
-            font-weight: 300;
-            margin-bottom: 40px;
-        }
-
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .badge {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #f1f5f9;
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            padding: 10px 20px;
-            border-radius: 8px;
-            letter-spacing: 1px;
-        }
-
-        /* 3. الأقسام الهندسية التابعة للمشروع (المستقاة من ملف الـ PDF) */
-        .section-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 90px 20px 40px 20px;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            color: var(--primary);
-            margin-bottom: 35px;
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .content-card {
-            background: var(--panel-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            margin-bottom: 40px;
-        }
-
-        .placeholder-text {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            font-style: italic;
-        }
-
-        /* 4. شريط التنقل السفلي (Footer) */
-        .footer {
-            background: #0a0c14;
-            border-top: 1px solid rgba(0, 255, 204, 0.1);
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            font-family: 'Orbitron', sans-serif;
-            color: #64748b;
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer p {
-            color: #475569;
-            font-size: 0.85rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        @media (max-width: 768px) {
-            .navbar { padding: 0 20px; }
-            .nav-links { display: none; }
-            .hero-name { font-size: 1.9rem; }
-            .hero-panel { padding: 30px 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- القائمة العلوية الذكية بالشعار المحدث -->
-    <nav class="navbar">
-        <div class="nav-logo">
-            <!-- ربط ملف الشعار الخاص بك مباشرة من المجلد الرئيسي -->
-            <img src="ahmad_elsamani_final_logo.jpg" alt="Ahmad Elsamani Logo">
-            <span>AHMED SALAH</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#project-details">Project Details</a></li>
-            <li><a href="#programming-logic">Programming Logic</a></li>
-            <li><a href="#scada-hmi">SCADA & HMI</a></li>
-        </ul>
-    </nav>
-
-    <!-- الصفحة الرئيسية الكبرى (الخلفية المتحركة التلقائية) -->
-    <section class="hero-section">
-        <div class="background-slideshow">
-            <div class="slide active" style="background-image: url('images/1.png');"></div>
-            <div class="slide" style="background-image: url('images/2.png');"></div>
-            <div class="slide" style="background-image: url('images/3.png');"></div>
-            <div class="slide" style="background-image: url('images/4.png');"></div>
-        </div>
-        <div class="grid-overlay"></div>
-
-        <div class="hero-panel">
-            <h1 class="hero-name">Ahmed Salah Ahmed Elsamani</h1>
-            <div class="hero-title">Control & Automation Engineer | Core Engineering & Digital Transformation Specialist</div>
-            <p class="hero-description">
-                Specialized in industrial automation, digital transformation, and core engineering projects. Over 3 years of hands-on experience integrating intelligent control systems, optimizing asset performance, and ensuring strict compliance with global safety and reliability standards.
-            </p>
-            <div class="badge-container">
-                <span class="badge">CMRP</span>
-                <span class="badge">PMP</span>
-                <span class="badge">Certified in Cybersecurity</span>
-                <span class="badge">Node-RED & IoT</span>
-                <span class="badge">NEBOSH</span>
-                <span class="badge">SCE Accredited</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم 1: تفاصيل وفيديو المشروع العام -->
-    <section class="section-container" id="project-details">
-        <h2 class="section-title">Project Details & Description</h2>
-        <div class="content-card">
-            <p class="placeholder-text">[انتظار الوصف المخصص لـ Project Name & Description الحصري من ملف الـ PDF لملئه هنا...]</p>
-        </div>
-    </section>
-
-    <!-- قسم 2: المنطق البرمجي والأكواد -->
-    <section class="section-container" id="programming-logic">
-        <h2 class="section-title">Programming Logic & Architecture</h2>
-        <div class="content-card">
-            <p class="placeholder-text">[انتظار الوصف المخصص لبنية الـ Programming Logic ولقطات الأكواد التوضيحية لملئها هنا...]</p>
-        </div>
-    </section>
-
-    <!-- قسم 3: واجهات الاسكادا وشاشات التشغيل -->
-    <section class="section-container" id="scada-hmi">
-        <h2 class="section-title">SCADA & HMI Systems</h2>
-        <div class="content-card">
-            <p class="placeholder-text">[انتظار تفاصيل أنظمة المراقبة الـ SCADA & HMI وسيناريوهات التشغيل لملئها هنا...]</p>
-        </div>
-    </section>
-
-    <!-- القائمة والتذييل السفلي للموقع -->
-    <footer class="footer">
-        <ul class="footer-links">
-            <li><a href="#">Top</a></li>
-            <li><a href="#project-details">Project Details</a></li>
-            <li><a href="#programming-logic">Programming Logic</a></li>
-            <li><a href="#scada-hmi">SCADA & HMI</a></li>
-        </ul>
-        <p>&copy; 2026 Ahmed Salah. All Engineering Rights Reserved.</p>
-    </footer>
-
-    <!-- سكربت حركة الخلفية التلقائية المستمرة -->
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        const slideInterval = 5000;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, slideInterval);
-    </script>
-</body>
-</html>
+            background
