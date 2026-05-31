@@ -10,7 +10,7 @@
         :root {
             --primary: #00ffcc;
             --bg-dark: #050507;
-            --panel-bg: rgba(10, 12, 18, 0.85);
+            --panel-bg: rgba(10, 12, 18, 0.88);
             --grid-color: rgba(0, 255, 204, 0.03);
             --card-bg: rgba(16, 24, 48, 0.6);
         }
@@ -29,14 +29,14 @@
             overflow-x: hidden;
         }
 
-        /* 1. شريط التنقل العلوي الذكي (Navbar) المحدث بالترتيب الجديد */
+        /* 1. شريط التنقل العلوي الذكي (Navbar) بالترتيب الجديد المعتمد */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 75px;
-            background: rgba(5, 5, 7, 0.85);
+            background: rgba(5, 5, 7, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 255, 204, 0.15);
             display: flex;
@@ -90,7 +90,7 @@
             text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
         }
 
-        /* 2. الصفحة الأولى الأساسية (Hero Section) ذات الخلفية الحية المتغيرة */
+        /* 2. الصفحة الأولى الأساسية (Hero Section) ذات الخلفية الحية المتغيرة تلقائياً */
         .hero-section {
             position: relative;
             width: 100%;
@@ -100,6 +100,7 @@
             justify-content: center;
             padding: 20px;
             overflow: hidden;
+            background-color: #0a0d16; /* لون احتياطي لمنع الشاشة السوداء في حال تأخر تحميل الصور */
         }
 
         .background-slideshow {
@@ -126,7 +127,7 @@
         }
 
         .slide.active {
-            opacity: 0.35;
+            opacity: 0.28; /* درجة شفافة متناسقة لضمان قراءة النصوص بوضوح */
             transform: scale(1);
         }
 
@@ -140,7 +141,7 @@
                 linear-gradient(var(--grid-color) 1.5px, transparent 1.5px),
                 linear-gradient(90deg, var(--grid-color) 1.5px, transparent 1.5px);
             background-size: 35px 35px;
-            background-color: rgba(5, 5, 7, 0.5);
+            background-color: rgba(5, 5, 7, 0.4);
             z-index: 2;
             pointer-events: none;
         }
@@ -209,11 +210,11 @@
             letter-spacing: 1px;
         }
 
-        /* 3. حاوية الأقسام الهندسية التخصصية الجديدة */
+        /* 3. حاوية الأقسام الهندسية التخصصية */
         .section-container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 90px 20px 40px 20px;
+            padding: 95px 20px 40px 20px;
         }
 
         .section-title {
@@ -289,6 +290,7 @@
 </head>
 <body>
 
+    <!-- القائمة العلوية الذكية المحدثة بالكامل بالترتيب الجديد المعتمد -->
     <nav class="navbar">
         <div class="nav-logo">
             <img src="ahmad_elsamani_final_logo.jpg" alt="Ahmad Elsamani Logo">
@@ -302,8 +304,10 @@
         </ul>
     </nav>
 
+    <!-- الصفحة الرئيسية الكبرى (الخلفية المتحركة التلقائية المدمجة) -->
     <section class="hero-section">
         <div class="background-slideshow">
+            <!-- مسارات الصور الصحيحة والمحدثة لتقرأ من مجلد الميديا الخاص بك مباشرة -->
             <div class="slide active" style="background-image: url('images/1.png');"></div>
             <div class="slide" style="background-image: url('images/2.png');"></div>
             <div class="slide" style="background-image: url('images/3.png');"></div>
@@ -328,6 +332,7 @@
         </div>
     </section>
 
+    <!-- قسم 1: مشاريع الأتمتة والتحكم الصناعي -->
     <section class="section-container" id="automation-projects">
         <h2 class="section-title">Automation Projects</h2>
         <div class="content-card">
@@ -335,6 +340,7 @@
         </div>
     </section>
 
+    <!-- قسم 2: مشاريع إنترنت الأشياء والتحول الرقمي -->
     <section class="section-container" id="iot-projects">
         <h2 class="section-title">IoT Projects</h2>
         <div class="content-card">
@@ -342,6 +348,7 @@
         </div>
     </section>
 
+    <!-- قسم 3: مشاريع تصاميم ومخططات الـ ePLAN الكهربائية -->
     <section class="section-container" id="eplan-projects">
         <h2 class="section-title">ePLAN Projects</h2>
         <div class="content-card">
@@ -349,6 +356,7 @@
         </div>
     </section>
 
+    <!-- القائمة والتذييل السفلي المحدث للموقع -->
     <footer class="footer">
         <ul class="footer-links">
             <li><a href="#">HOME</a></li>
@@ -359,12 +367,14 @@
         <p>&copy; 2026 Ahmed Salah. All Engineering Rights Reserved.</p>
     </footer>
 
+    <!-- سكربت حركة الصور التلقائية المستمرة -->
     <script>
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
         const slideInterval = 5000;
 
         function nextSlide() {
+            if(slides.length === 0) return;
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
