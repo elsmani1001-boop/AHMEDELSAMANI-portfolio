@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Salah | Control & Automation Portfolio</title>
+    <style>
+        /* استيراد الخطوط الهندسية العريضة لتقديم هوية بصرية قوية وجريئة */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050507;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* حاوية الخلفية السينمائية المتغيرة تلقائياً */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; 
+            filter: blur(6px) scale(1.02); 
+        }
+
+        .bg-slide.active {
+            opacity: 0.25; 
+        }
+
+        /* شبكة الخطوط الهندسية الرقمية المتقاطعة */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(5, 5, 7, 0.8); 
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* شريط التنقل العلوي الشفاف */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        nav a {
+            color: #8a8a93;
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #00f0ff;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+
+        /* الحاوية الرئيسية للموقع */
+        .main-content {
+            display: block;
+        }
+
+        .hero-container {
+            max-width: 1300px;
+            margin: 180px auto 80px auto;
+            padding: 0 40px;
+        }
+
+        .hero-card {
+            background: rgba(10, 10, 15, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 80px 60px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 10%;
+            width: 30%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f0ff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .description {
+            font-size: 18px;
+            color: #a1a1aa;
+            line-height: 1.7;
+            max-width: 900px;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .badges {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .badge:hover {
+            background: rgba(0, 240, 255, 0.05);
+            border-color: #00f0ff;
+            color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .hub-section {
+            max-width: 1300px;
+            margin: 0 auto 120px auto;
+            padding: 0 40px;
+        }
+
+        .hub-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hub-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px);
+            background: rgba(10, 10, 15, 0.8);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .card-meta {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: #00f0ff;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .grid-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .grid-card p {
+            color: #71717a;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .card-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .grid-card:hover .card-btn {
+            background: #00f0ff;
+            border-color: #00f0ff;
+            color: #050507;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            font-weight: 900;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* تصميم الصفحات الداخلية الديناميكية لعرض المشاريع (Project View Template) */
+        /* ------------------------------------------------------------------ */
+        .project-page {
+            display: none; /* مخفية افتراضياً وتظهر بالـ JavaScript */
+            max-width: 1200px;
+            margin: 150px auto 60px auto;
+            padding: 0 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8a8a93;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: #00f0ff;
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .project-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        /* معرض الصور الداخلي السريع (2 ثانية لسرعة التأمل الحركي) */
+        .project-gallery {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .gallery-img.active {
+            opacity: 1;
+        }
+
+        .project-info h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .project-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            color: #00f0ff;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .project-details {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .tech-stack-list {
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(0, 240, 255, 0.03);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            color: #00f0ff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .project-layout { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
+            .project-gallery { height: 280px; }
+            h1 { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- السلايد شو الرئيسي المربوط بصورك العشرة الفعليّة -->
+    <div class="bg-slideshow">
+        <div class="bg-slide active" style="background-image: url('لقطة شاشة 2026-05-24 112918_2.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-24 113143_3.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 110551.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 110615.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 110805.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 110851.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 111006.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 111022.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 111210.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('لقطة شاشة 2026-05-31 111453.jpg');"></div>
+    </div>
+
+    <div class="bg-overlay"></div>
+
+    <header>
+        <div class="logo" onclick="showMainPage()">AHMED <span>SALAH</span></div>
+        <nav>
+            <a href="#" class="active" onclick="showMainPage()">Home</a>
+        </nav>
+    </header>
+
+    <!-- واجهة الصفحة الرئيسية المفتوحة تلقائياً -->
+    <div id="main-page" class="main-content">
+        <section class="hero-container">
+            <div class="hero-card">
+                <h1>Ahmed Salah Ahmed Elsamani</h1>
+                <div class="subtitle">Control & Automation Engineer | Core Engineering & Digital Transformation Specialist</div>
+                <p class="description">
+                    A results-driven Control and Automation Engineer with over 3 years of professional experience in designing, programming, and optimizing advanced industrial control systems. Specialized in developing high-efficiency automation solutions and driving industrial digital transformation across complex manufacturing and warehousing environments.
+                </p>
+                <div class="badges">
+                    <div class="badge">CMRP</div>
+                    <div class="badge">SCE ACCREDITED</div>
+                    <div class="badge">NEBOSH</div>
+                    <div class="badge">PMP</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hub-section">
+            <div class="hub-title">Navigation Hub</div>
+            <div class="grid-container">
+                
+                <div class="grid-card">
+                    <div>
+                        <div class="card-meta">SYSTEMS ARCHITECTURE</div>
+                        <h3>AUTOMATION PROJECTS</h3>
+                        <p>Comprehensive engineering documentation covering industrial PLC programming logic, multi-stage sorting automation, and detailed SCADA/HMI control runtime screens.</p>
+                    </div>
+                    <button class="card-btn" onclick="openProject('automation')">OPEN REPOSITORY</button>
+                </div>
+
+                <div class="grid-card">
+                    <div>
+                        <div class="card-meta">DIGITAL TRANSFORMATION</div>
+                        <h3>IIoT PROJECTS</h3>
+                        <p>Advanced integration of sensor networks, edge gateways, and industrial cloud computing connectivity designed for predictive maintenance and deep operational telemetry.</p>
+                    </div>
+                    <button class="card-btn" onclick="openProject('iiot')">OPEN REPOSITORY</button>
+                </div>
+
+                <div class="grid-card">
+                    <div>
+                        <div class="card-meta">ELECTRICAL ENGINEERING</div>
+                    <h3>EPLAN DRAWINGS</h3>
+                        <p>Standardized electrical schematics, 2D enclosure layouts, and complete 3D macro panel assembly documentation fully compliant with global manufacturing codes.</p>
+                    </div>
+                    <button class="card-btn" onclick="openProject('eplan')">OPEN REPOSITORY</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    /* الصفحات الداخلية الفورية (تفتح دون طلب كلمة مرور) */
+    <!-- ------------------------------------------------------------------ -->
+    <div id="project-page" class="project-page">
+        <button class="btn-back" onclick="showMainPage()">← BACK TO NAVIGATION HUB</button>
+        <div class="project-layout">
+            
+            <!-- السلايدر المصغر السريع (2 ثانية لكل صورة داخل الصفحة) -->
+            <div class="project-gallery" id="inner-gallery">
+                <!-- الصور يتم إدخالها ديناميكياً بواسطة الجافا سكريبت بالأسفل -->
+            </div>
+
+            <div class="project-info">
+                <div class="project-tag" id="inner-tag">SYSTEMS ARCHITECTURE</div>
+                <h2 id="inner-title">AUTOMATION PROJECTS</h2>
+                <div class="project-details" id="inner-details">
+                    Detailed engineering analysis and programming structures will be shown here.
+                </div>
+                <div class="tech-stack-list" id="inner-stack">
+                    <!-- التاجات الهندسية لكل قسم -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* 1. السلايد شو الرئيسي للخلفية (كل 5 ثوانٍ) */
+        const mainSlides = document.querySelectorAll('.bg-slideshow .bg-slide');
+        let currentMainSlide = 0;
+        setInterval(() => {
+            mainSlides[currentMainSlide].classList.remove('active');
+            currentMainSlide = (currentMainSlide + 1) % mainSlides.length;
+            mainSlides[currentMainSlide].classList.add('active');
+        }, 5000);
+
+        /* 2. بيانات وجداول المشاريع الثلاثة المربوطة بصورك الفعليّة */
+        const projectData = {
+            automation: {
+                title: "AUTOMATION PROJECTS",
+                tag: "SYSTEMS ARCHITECTURE & CONTROL",
+                details: "Advanced development and execution of an Automated Sorting and Warehousing System simulation built entirely using Factory I/O and Siemens TIA Portal. The programming architecture utilizes precise multi-stage sorting gates, sensory data tracking loops, and fully integrated SCADA diagnostics to maximize material handling throughput and ensure continuous operational performance.",
+                stack: ["TIA Portal V18", "Factory I/O", "S7-1500 PLC", "LAD/SCL Logic", "HMI Comfort Panel"],
+                // اختيار أفضل 4 لقطات للمستودعات وسيور الفرز لهذا القسم
+                images: [
+                    'لقطة شاشة 2026-05-31 110551.jpg',
+                    'لقطة شاشة 2026-05-31 110615.jpg',
+                    'لقطة شاشة 2026-05-31 110805.jpg',
+                    'لقطة شاشة 2026-05-31 110851.jpg'
+                ]
+            },
+            iiot: {
+                title: "IIoT PROJECTS",
+                tag: "DIGITAL TRANSFORMATION & CONNECTIVITY",
+                details: "Designing modern Industrial Internet of Things frameworks focused on industrial data acquisition. This repository details edge gateway configurations, MQTT/OPC-UA communication telemetry, and cloud dashboard tracking layouts built to enable real-time condition monitoring, predictive maintenance metrics, and automated failure reporting across remote facility cells.",
+                stack: ["Node-RED", "OPC UA Server", "MQTT Protocol", "Ignition SCADA", "IoT Gateways"],
+                // اختيار لقطات الخلايا الروبوتية وخطوط الإنتاج المعقدة لهذا القسم
+                images: [
+                    'لقطة شاشة 2026-05-31 111210.jpg',
+                    'لقطة شاشة 2026-05-31 111453.jpg',
+                    'لقطة شاشة 2026-05-24 113143_3.jpg'
+                ]
+            },
+            eplan: {
+                title: "EPLAN ELECTRIC P8 DRAWINGS",
+                tag: "ELECTRICAL ENGINEERING & PANEL DESIGN",
+                details: "Standardized industrial control panel design and loop diagram drafting. Covers complete multi-line electrical power schematics, PLC I/O wiring distribution modules, and comprehensive 2D/3D enclosure layout configurations engineered in full compliance with IEC/NEMA manufacturing regulations and structural codes.",
+                stack: ["EPLAN Electric P8", "Panel 3D Pro", "IEC Standards", "Bill of Materials (BOM)", "Schneider Devices"],
+                // اختيار لقطات الهياكل والأوناش العلوية والرافعات الآلية الفخمة
+                images: [
+                    'لقطة شاشة 2026-05-31 111006.jpg',
+                    'لقطة شاشة 2026-05-31 111022.jpg',
+                    'لقطة شاشة 2026-05-24 112918_2.jpg'
+                ]
+            }
+        };
+
+        /* 3. جافا سكريبت مخصصة للتحويل الفوري بين الصفحات وإدارة السلايدر الداخلي (2 ثانية) */
+        let innerSliderInterval = null;
+
+        function openProject(key) {
+            const data = projectData[key];
+            if (!data) return;
+
+            // إخفاء الرئيسية وإظهار صفحة العرض
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('project-page').style.display = 'block';
+
+            // ملء النصوص والتاغات الهندسية
+            document.getElementById('inner-title').innerText = data.title;
+            document.getElementById('inner-tag').innerText = data.tag;
+            document.getElementById('inner-details').innerText = data.details;
+
+            const stackContainer = document.getElementById('inner-stack');
+            stackContainer.innerHTML = '';
+            data.stack.forEach(tech => {
+                stackContainer.innerHTML += `<span class="tech-tag">${tech}</span>`;
+            });
+
+            // بناء صور المعرض الداخلي بشكل ديناميكي
+            const galleryContainer = document.getElementById('inner-gallery');
+            galleryContainer.innerHTML = '';
+            data.images.forEach((imgSrc, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                galleryContainer.innerHTML += `<div class="gallery-img ${activeClass}" style="background-image: url('${imgSrc}');"></div>`;
+            });
+
+            // تفعيل السلايدر الداخلي السريع (تغير الصورة كل 2000 مللي ثانية = 2 ثانية)
+            clearInterval(innerSliderInterval);
+            const innerSlides = galleryContainer.querySelectorAll('.gallery-img');
+            let currentInnerSlide = 0;
+            
+            innerSliderInterval = setInterval(() => {
+                if(innerSlides.length <= 1) return;
+                innerSlides[currentInnerSlide].classList.remove('active');
+                currentInnerSlide = (currentInnerSlide + 1) % innerSlides.length;
+                innerSlides[currentInnerSlide].classList.add('active');
+            }, 2000);
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMainPage() {
+            clearInterval(innerSliderInterval);
+            document.getElementById('project-page').style.display = 'none';
+            document.getElementById('main-page').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
