@@ -1,44 +1,109 @@
-<!-- التذييل المحدث (Footer) -->
-<footer style="background: #050507; border-top: 1px solid #1e293b; padding: 60px 50px; color: #ffffff; font-family: 'Orbitron', sans-serif;">
-    
-    <!-- الاسم الكبير -->
-    <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 40px; border-bottom: 1px solid #1e293b; padding-bottom: 20px;">
-        AHMED EL-SAMANI
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Salah | Control & Automation Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: #050507; color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* شريط التنقل */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; height: 75px; background: rgba(5, 5, 7, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 255, 204, 0.15); display: flex; justify-content: space-between; align-items: center; padding: 0 50px; z-index: 100; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { font-family: 'Orbitron', sans-serif; color: #94a3b8; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .nav-links a:hover { color: #00ffcc; }
+
+        /* الخلفية المتحركة */
+        .slideshow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 2s ease-in-out; }
+        .slide.active { opacity: 0.4; }
+
+        /* اللوحة الرئيسية */
+        .content-panel { position: relative; margin: 150px auto 50px; background: rgba(10, 20, 30, 0.75); backdrop-filter: blur(12px); padding: 50px; border-radius: 20px; border: 1px solid rgba(0, 255, 204, 0.2); max-width: 900px; text-align: center; }
+        .hero-name { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 15px; }
+        
+        /* الأقسام */
+        .section-container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { font-family: 'Orbitron', sans-serif; color: #00ffcc; margin-bottom: 20px; border-left: 4px solid #00ffcc; padding-left: 15px; }
+        .content-card { background: rgba(16, 24, 48, 0.7); padding: 35px; border-radius: 16px; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+        <div style="font-family: 'Orbitron', sans-serif; font-weight: 900;">AHMED SALAH</div>
+        <ul class="nav-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#automation">AUTOMATION PROJECTS</a></li>
+            <li><a href="#iot">IOT PROJECTS</a></li>
+            <li><a href="#eplan">ePLAN PROJECTS</a></li>
+        </ul>
+    </nav>
+
+    <!-- الخلفية المتحركة -->
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: url('images/1.png');"></div>
+        <div class="slide" style="background-image: url('images/2.png');"></div>
+        <div class="slide" style="background-image: url('images/3.png');"></div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-        
-        <!-- قسم CONTACT -->
-        <div>
-            <h4 style="color: #94a3b8; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px;">CONTACT</h4>
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 10px;">Global Engineering Projects</p>
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 10px;">+966574927809</p>
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">elsmani.1001@gmail.com</p>
-        </div>
+    <!-- اللوحة التعريفية -->
+    <div class="content-panel">
+        <h1 class="hero-name">AHMED SALAH AHMED ELSAMANI</h1>
+        <p>CONTROL & AUTOMATION ENGINEER | DIGITAL TRANSFORMATION SPECIALIST</p>
+        <br>
+        <p>Specialized in industrial automation, digital transformation, and core engineering projects. Over 3 years of hands-on experience integrating intelligent control systems, optimizing asset performance, and ensuring strict compliance with global safety and reliability standards.</p>
+    </div>
 
-        <!-- قسم CONNECT -->
-        <div>
-            <h4 style="color: #94a3b8; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px;">CONNECT</h4>
-            <div style="display: flex; gap: 15px; font-size: 1.5rem;">
-                <a href="#" style="color: #ffffff;">f</a> <!-- استبدل بـ FontAwesome icons -->
-                <a href="#" style="color: #ffffff;">in</a>
-                <!-- أضف بقية أيقونات التواصل هنا -->
+    <!-- الأقسام -->
+    <section class="section-container" id="automation"><h2 class="section-title">Automation Projects</h2><div class="content-card">تفاصيل الأتمتة...</div></section>
+    <section class="section-container" id="iot"><h2 class="section-title">IoT Projects</h2><div class="content-card">تفاصيل الـ IoT...</div></section>
+    <section class="section-container" id="eplan"><h2 class="section-title">ePLAN Projects</h2><div class="content-card">تفاصيل الـ ePLAN...</div></section>
+
+    <!-- التذييل المحدث (Footer) - في نهاية الصفحة فقط -->
+    <footer style="background-color: #000000; color: #ffffff; padding: 40px 50px; font-family: sans-serif; border-top: 1px solid #333;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="font-size: 1.8rem; font-weight: bold; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                AHMED EL-SAMANI
+            </div>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 40px;">
+                <div>
+                    <h4 style="color: #666; font-size: 0.7rem; letter-spacing: 1px; margin-bottom: 10px;">CONTACT</h4>
+                    <p style="font-size: 0.9rem;">Global Engineering Projects</p>
+                    <p style="font-size: 0.9rem;">+966574927809</p>
+                    <p style="font-size: 0.9rem;">elsmani.1001@gmail.com</p>
+                </div>
+                <div>
+                    <h4 style="color: #666; font-size: 0.7rem; letter-spacing: 1px; margin-bottom: 10px;">CONNECT</h4>
+                    <p>f  in</p>
+                </div>
+                <div>
+                    <h4 style="color: #666; font-size: 0.7rem; letter-spacing: 1px; margin-bottom: 10px;">LEGAL</h4>
+                    <p style="font-size: 0.9rem;">© 2026 Ahmed Salah. All Engineering Rights Reserved.</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; padding-top: 20px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="logo.png" style="width: 30px; height: 30px;" alt="Logo">
+                    <span style="font-weight: bold;">Ahmed Salah</span>
+                </div>
+                <div style="font-size: 0.8rem; color: #666;">Control & Automation Specialist</div>
             </div>
         </div>
+    </footer>
 
-        <!-- قسم LEGAL -->
-        <div>
-            <h4 style="color: #94a3b8; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px;">LEGAL</h4>
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem;">© 2026 Ahmed Salah. All Engineering Rights Reserved.</p>
-        </div>
-    </div>
-
-    <!-- الجزء السفلي النهائي -->
-    <div style="margin-top: 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 20px;">
-        <div style="display: flex; align-items: center; gap: 10px; font-weight: bold;">
-            <img src="ahmad_elsamani_final_logo.jpg" alt="Logo" style="height: 30px;">
-            Ahmed Salah
-        </div>
-        <div style="color: #94a3b8; font-size: 0.8rem;">Control & Automation Specialist</div>
-    </div>
-</footer>
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    </script>
+</body>
+</html>
