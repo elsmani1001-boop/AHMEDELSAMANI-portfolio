@@ -139,4 +139,238 @@
             background-image: 
                 linear-gradient(var(--grid-color) 1.5px, transparent 1.5px),
                 linear-gradient(90deg, var(--grid-color) 1.5px, transparent 1.5px);
-            background
+            background-size: 35px 35px;
+            background-color: rgba(5, 5, 7, 0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-panel {
+            position: relative;
+            z-index: 3;
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 255, 204, 0.25);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .hero-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00ffcc;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            padding: 10px 20px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* 3. حاوية الأقسام الهندسية التخصصية الجديدة */
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 20px 40px 20px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 35px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .content-card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            margin-bottom: 40px;
+        }
+
+        .placeholder-text {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* 4. شريط التنقل السفلي الاحترافي */
+        .footer {
+            background: #0a0c14;
+            border-top: 1px solid rgba(0, 255, 204, 0.1);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-family: 'Orbitron', sans-serif;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer p {
+            color: #475569;
+            font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero-name { font-size: 1.9rem; }
+            .hero-panel { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="ahmad_elsamani_final_logo.jpg" alt="Ahmad Elsamani Logo">
+            <span>AHMED SALAH</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#automation-projects">AUTOMATION PROJECTS</a></li>
+            <li><a href="#iot-projects">IOT PROJECTS</a></li>
+            <li><a href="#eplan-projects">ePLAN PROJECTS</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="background-slideshow">
+            <div class="slide active" style="background-image: url('images/1.png');"></div>
+            <div class="slide" style="background-image: url('images/2.png');"></div>
+            <div class="slide" style="background-image: url('images/3.png');"></div>
+            <div class="slide" style="background-image: url('images/4.png');"></div>
+        </div>
+        <div class="grid-overlay"></div>
+
+        <div class="hero-panel">
+            <h1 class="hero-name">Ahmed Salah Ahmed Elsamani</h1>
+            <div class="hero-title">Control & Automation Engineer | Core Engineering & Digital Transformation Specialist</div>
+            <p class="hero-description">
+                Specialized in industrial automation, digital transformation, and core engineering projects. Over 3 years of hands-on experience integrating intelligent control systems, optimizing asset performance, and ensuring strict compliance with global safety and reliability standards.
+            </p>
+            <div class="badge-container">
+                <span class="badge">CMRP</span>
+                <span class="badge">PMP</span>
+                <span class="badge">Certified in Cybersecurity</span>
+                <span class="badge">Node-RED & IoT</span>
+                <span class="badge">NEBOSH</span>
+                <span class="badge">SCE Accredited</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container" id="automation-projects">
+        <h2 class="section-title">Automation Projects</h2>
+        <div class="content-card">
+            <p class="placeholder-text">[انتظار تفاصيل الأوصاف الهندسية والبرمجية من الـ PDF الحصري لتوزيعها داخل قسم الأتمتة والتحكم هنا...]</p>
+        </div>
+    </section>
+
+    <section class="section-container" id="iot-projects">
+        <h2 class="section-title">IoT Projects</h2>
+        <div class="content-card">
+            <p class="placeholder-text">[هنا سيتم استعراض مشاريع التحول الرقمي، بروتوكولات MQTT، وحلول Node-RED وربط الـ IoT الصناعي...]</p>
+        </div>
+    </section>
+
+    <section class="section-container" id="eplan-projects">
+        <h2 class="section-title">ePLAN Projects</h2>
+        <div class="content-card">
+            <p class="placeholder-text">[هنا سيتم إدراج مخططات لوحات التحكم، التوزيع الكهربائي للهندسة الأساسية المصممة عبر منصة ePLAN الاحترافية...]</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#automation-projects">AUTOMATION PROJECTS</a></li>
+            <li><a href="#iot-projects">IOT PROJECTS</a></li>
+            <li><a href="#eplan-projects">ePLAN PROJECTS</a></li>
+        </ul>
+        <p>&copy; 2026 Ahmed Salah. All Engineering Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const slideInterval = 5000;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, slideInterval);
+    </script>
+</body>
+</html>
